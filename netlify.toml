@@ -1,0 +1,15 @@
+# Netlify hosts only the frontend. All /api requests are proxied to the existing Render backend.
+[build]
+  publish = "frontend"
+
+[[redirects]]
+  from = "/api/*"
+  to = "https://seller-dropshipping-ai-automation.onrender.com/api/:splat"
+  status = 200
+  force = true
+
+# Client-side page fallback (must remain after the API proxy rule).
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
